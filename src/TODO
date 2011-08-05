@@ -1,0 +1,14 @@
+must check this file before implementing parser http://download.oracle.com/javase/tutorial/reflect/class/classMembers.html
+good resource on sun CodeModel http://namanmehta.blogspot.com/2010/01/use-codemodel-to-generate-java-source.html
+
+
+Example
+JCodeModel cm = new JCodeModel();
+JDefinedClass dc = cm._class("foo.Bar");
+JMethod m = dc.method(0, int.class, "foo");
+m.body()._return(JExpr.lit(5));
+
+File file = new File("./target/classes");
+file.mkdirs();
+cm.build(file);
+
