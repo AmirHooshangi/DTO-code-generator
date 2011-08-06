@@ -1,7 +1,6 @@
 package com.velorin.codegenerator;
 
 import com.sun.codemodel.JClassAlreadyExistsException;
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -13,8 +12,8 @@ import java.util.ArrayList;
  */
 public interface ClassGenerator {
 
-    void generateDTOClass(Class<?> toBeParsedClass, ArrayList<Field> fields, File file) throws JClassAlreadyExistsException, IOException;
+    void generateDTOClass(Class<?> toBeParsedClass, ArrayList<Field> fields, String packageName) throws JClassAlreadyExistsException, IOException;
 
-    void generateDTOUtilClass(Class<?> toBeParsedClass, ArrayList<Field> fields, File file) throws JClassAlreadyExistsException, IOException;
+    void generateDTOUtilClass(Class<?> toBeParsedClass, ArrayList<Field> fields, String packageName) throws JClassAlreadyExistsException, IOException;
 
 }
