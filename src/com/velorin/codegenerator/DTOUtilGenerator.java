@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class DTOUtilGenerator implements ClassGenerator {
 
 //TODO: DTO class must implement implement serializable.
-    public void generateDTOClass(Class<?> bean, String packageName) throws JClassAlreadyExistsException, IOException {
+    public void generateDTOClass(Class<?> bean, String packageName, String filePath) throws JClassAlreadyExistsException, IOException {
 
         BeanParser beanParser = new JavaBeanParser();
         ArrayList<Field> fields = beanParser.getFields(bean);
@@ -35,10 +35,10 @@ public class DTOUtilGenerator implements ClassGenerator {
         }
         Util.generateSetter(fields, definedClass);
         Util.generateGetter(fields, definedClass);
-        codeModel.build(new File("/home/amir/Desktop"));
+        codeModel.build(new File(filePath));
     }
 
-    public void generateDTOUtilClass(Class<?> bean, Class<?> beanDTO, String packageName) throws JClassAlreadyExistsException, IOException {
+    public void generateDTOUtilClass(Class<?> bean, Class<?> beanDTO, String packageName, String filePath) throws JClassAlreadyExistsException, IOException {
 
         BeanParser beanParser = new JavaBeanParser();
         ArrayList<Field> fields = beanParser.getFields(bean);
@@ -47,7 +47,7 @@ public class DTOUtilGenerator implements ClassGenerator {
         JDefinedClass definedClass = jPackage._class(bean.getSimpleName() + "DTOUtil");
         generateBeanToDTO(definedClass, beanDTO, bean, fields);
         generateDTOtoBean(definedClass, bean, beanDTO, fields);
-        codeModel.build(new File("/home/amir/Desktop"));
+        codeModel.build(new File(filePath));
     }
 
     private void generateDTOtoBean(JDefinedClass definedClass, Class<?> bean, Class<?> beanDTO, ArrayList<Field> fields) {

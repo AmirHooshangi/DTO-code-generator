@@ -12,8 +12,8 @@ import java.util.ArrayList;
  */
 public interface ClassGenerator {
 
-    void generateDTOClass(Class<?> toBeParsedClass, String packageName) throws JClassAlreadyExistsException, IOException;
+    void generateDTOClass(Class<?> toBeParsedClass, String packageName, String filePath) throws JClassAlreadyExistsException, IOException;
 
-    void generateDTOUtilClass(Class<?> bean, Class<?> beanDTO, String packageName) throws JClassAlreadyExistsException, IOException;
+    void generateDTOUtilClass(Class<?> bean, Class<?> beanDTO, String packageName, String filePath) throws JClassAlreadyExistsException, IOException;
 
 }
