@@ -7,11 +7,13 @@ import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JMethod;
 import com.sun.codemodel.JMod;
 import com.sun.codemodel.JPackage;
+import com.sun.xml.internal.ws.encoding.soap.SerializationException;
 import com.velorin.parser.BeanParser;
 import com.velorin.parser.JavaBeanParser;
 import com.velorin.utils.Util;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
@@ -30,6 +32,7 @@ public class DTOUtilGenerator implements ClassGenerator {
         JCodeModel codeModel = new JCodeModel();
         JPackage jPackage = codeModel._package(packageName);
         JDefinedClass definedClass = jPackage._class(bean.getSimpleName() + "DTO");
+        definedClass._implements(Serializable.class);
         for (int i = 0; i < fields.size(); i++) {
             definedClass.field(JMod.PRIVATE, fields.get(i).getType(), fields.get(i).getName());
         }
