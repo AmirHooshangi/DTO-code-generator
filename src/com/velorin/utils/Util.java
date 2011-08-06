@@ -37,12 +37,14 @@ public  class Util {
     }
     
     
-//TODO: optimising this function    
-//TODO: checking if the first char wasnt capital
  public static String uppercaseFirstCharacter(String name){
      
      char[] characters = name.toString().toCharArray();
-     characters[0] -= 32;
-     return new String(characters);
+     if(Character.isUpperCase(characters[0])){
+         return name;
+     }else{
+         characters[0] = Character.toUpperCase(characters[0]);
+         return new String(characters);
+     }
  } 
 }
