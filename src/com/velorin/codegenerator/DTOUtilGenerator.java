@@ -7,7 +7,6 @@ import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JMethod;
 import com.sun.codemodel.JMod;
 import com.sun.codemodel.JPackage;
-import com.sun.xml.internal.ws.encoding.soap.SerializationException;
 import com.velorin.parser.BeanParser;
 import com.velorin.parser.JavaBeanParser;
 import com.velorin.utils.Util;
@@ -24,7 +23,6 @@ import java.util.ArrayList;
  */
 public class DTOUtilGenerator implements ClassGenerator {
 
-//TODO: DTO class must implement implement serializable.
     public void generateDTOClass(Class<?> bean, String packageName, String filePath) throws JClassAlreadyExistsException, IOException {
 
         BeanParser beanParser = new JavaBeanParser();
