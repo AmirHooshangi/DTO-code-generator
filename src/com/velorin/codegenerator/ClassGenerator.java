@@ -2,8 +2,6 @@ package com.velorin.codegenerator;
 
 import com.sun.codemodel.JClassAlreadyExistsException;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 
 /**
  *
