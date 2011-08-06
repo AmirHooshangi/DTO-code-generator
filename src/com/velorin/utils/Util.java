@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author amir
+ * @author Amir Hooshangi
+ * Email: amirhoshangi at Gmail
  */
 public  class Util {
 
@@ -37,6 +38,7 @@ public  class Util {
     
     
 //TODO: optimising this function    
+//TODO: checking if the first char wasnt capital
  public static String uppercaseFirstCharacter(String name){
      
      char[] characters = name.toString().toCharArray();
