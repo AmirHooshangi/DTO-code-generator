@@ -52,6 +52,7 @@ public class DTOUtilGenerator implements ClassGenerator {
         JCodeModel codeModel = new JCodeModel();
         JPackage jPackage = codeModel._package(packageName);
         JDefinedClass definedClass = jPackage._class(bean.getSimpleName() + "DTO");
+        definedClass.constructor(JMod.PUBLIC);
         definedClass._implements(Serializable.class);
         for (int i = 0; i < fields.size(); i++) {
             definedClass.field(JMod.PRIVATE, fields.get(i).getType(), fields.get(i).getName());
