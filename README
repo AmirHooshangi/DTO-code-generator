@@ -1,7 +1,6 @@
 DTO code generation API helps developers to use DTO design pattern fast and effectively.
 DTO design pattern is being used in wide area of J2ee projects especially in those which uses EJB,SOAP etc.
 this API is for developers who hate writing DTO classes and convert those values to their Beans and vise versa.
-Simplicity is the key feature in this API unless writing code manually would be faster !!
 
 there is some easy steps to use this API, and some important notes that will be mentioned.
 all you need is methods in ClassGenerator interface. 
@@ -9,7 +8,7 @@ DTOUtilGenerator is one of implementations of ClassGenerator. so you need instan
 e.g
 ClassGenerator dTOUtilGenerator = new DTOUtilGenerator();
 
-one of the advantages of this API is that it generates DTO class from you main Java Beans.
+one of the advantages of this API is that it generates DTO class from your main Java Beans.
 you can generate your DTO class using generateDTOClass method in ClassGenerator interface.
 there is some notes that you must notice.
 
