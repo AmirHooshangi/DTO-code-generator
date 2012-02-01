@@ -1,8 +1,5 @@
-DTO code generation API helps developers to use DTO design pattern fast and effectively.
-DTO design pattern is being used in wide area of J2ee projects especially in those which uses EJB,SOAP etc.
-this API is for developers who hate writing DTO classes and convert those values to their Beans and vise versa.
-
-there is some easy steps to use this API, and some important notes that will be mentioned.
+DTO (Data Transfer Object) code generator API helps developers to use DTO design pattern fast and effectively. DTO design pattern is being used in wide area of J2ee projects especially in those which uses EJB,SOAP etc.
+this API is for developers who hate writing DTO classes and convert those values to their Beans and vise versa. there is some easy steps to use this API, and some important notes that will be mentioned.
 all you need is methods in ClassGenerator interface. 
 DTOUtilGenerator is one of implementations of ClassGenerator. so you need instances of this class.
 e.g
