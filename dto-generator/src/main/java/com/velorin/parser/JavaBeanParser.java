@@ -37,11 +37,11 @@ public class JavaBeanParser implements BeanParser {
 
         final Field[] unParsedFileds = toBeParsedClass.getDeclaredFields();
         final ArrayList<Field> parsedFields = new ArrayList<Field>();
-        for (int i = 0; i < unParsedFileds.length; i++) {
-            if (unParsedFileds[i].getAnnotation(DTO.class) == null) {
+        for (Field unParsedFiled : unParsedFileds) {
+            if (unParsedFiled.getAnnotation(DTO.class) == null) {
 
             } else {
-                parsedFields.add(unParsedFileds[i]);
+                parsedFields.add(unParsedFiled);
             }
         }
         return parsedFields;

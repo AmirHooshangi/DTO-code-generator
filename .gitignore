@@ -5,3 +5,4 @@
 .nbproject/
 .dist/
 build.xml
+*.iml

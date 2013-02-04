@@ -1,54 +1,63 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>generator-parent</artifactId>
-  <groupId>com.velorin.dto</groupId>
-  <version>0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>generator-parent</name>
-  <description>Parent project for DTO code generation with Sun's codemodel.</description>
+    <artifactId>generator-parent</artifactId>
+    <groupId>com.velorin.dto</groupId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>generator-parent</name>
+    <description>Parent project for DTO code generation with Sun's codemodel.</description>
 
-  <properties>
-    <jdkLevel>1.5</jdkLevel>
-    <version.codemodel>2.4</version.codemodel>
-    <version.maven-compiler-plugin>2.3.1</version.maven-compiler-plugin>
-    <version.exec-maven-plugin>1.2</version.exec-maven-plugin>
-    <version.build-helper-maven-plugin>1.7</version.build-helper-maven-plugin>
-    <version.junit4>4.8.1</version.junit4>
-  </properties>
+    <properties>
+        <jdkLevel>1.6</jdkLevel>
+        <version.codemodel>2.4</version.codemodel>
+        <version.maven-compiler-plugin>2.3.1</version.maven-compiler-plugin>
+        <version.exec-maven-plugin>1.2</version.exec-maven-plugin>
+        <version.build-helper-maven-plugin>1.7</version.build-helper-maven-plugin>
+        <version.junit4>4.8.1</version.junit4>
+    </properties>
 
-  <modules>
-    <module>dto-generator</module>
-    <module>dto-sample</module>
-  </modules>
+    <modules>
+        <module>dto-generator</module>
+        <module>dto-sample</module>
+    </modules>
 
-  <build>
-    <plugins>
-      <plugin>
-	<artifactId>maven-compiler-plugin</artifactId>
-	<version>2.1</version>
-	<executions>
-	  <execution>
-	    <id>compile</id>
-	    <phase>compile</phase>
-	    <goals>
-	      <goal>compile</goal>
-	    </goals>
-	  </execution>
-	  <execution>
-	    <id>unit-test-compile</id>
-	    <goals>
-	      <goal>testCompile</goal>
-	    </goals>
-	  </execution>
-	</executions>
-	<configuration>
-	  <source>${jdkLevel}</source>
-	  <target>${jdkLevel}</target>
-	</configuration>
-      </plugin>
-    </plugins>
-  </build>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>unit-test-compile</id>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <source>${jdkLevel}</source>
+                    <target>${jdkLevel}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sun.codemodel</groupId>
+            <artifactId>codemodel</artifactId>
+            <version>2.6</version>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -23,12 +23,12 @@
 package com.velorin.codegenerator;
 
 import com.sun.codemodel.JClassAlreadyExistsException;
+
 import java.io.IOException;
 
 /**
- *
  * @author Amir Hooshangi
- * email: Amirhoshangi at Gmail
+ *         email: Amirhoshangi at Gmail
  */
 public interface ClassGenerator {
 

@@ -22,16 +22,11 @@
 
 package com.velorin.codegenerator;
 
-import com.sun.codemodel.JBlock;
-import com.sun.codemodel.JClassAlreadyExistsException;
-import com.sun.codemodel.JCodeModel;
-import com.sun.codemodel.JDefinedClass;
-import com.sun.codemodel.JMethod;
-import com.sun.codemodel.JMod;
-import com.sun.codemodel.JPackage;
+import com.sun.codemodel.*;
 import com.velorin.parser.BeanParser;
 import com.velorin.parser.JavaBeanParser;
 import com.velorin.utils.Util;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -39,9 +34,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 /**
- *
  * @author Amir Hooshangi
- * email: Amirhoshangi at Gmail
+ *         email: Amirhoshangi at Gmail
  */
 public class DTOUtilGenerator implements ClassGenerator {
 
@@ -54,8 +48,8 @@ public class DTOUtilGenerator implements ClassGenerator {
         JDefinedClass definedClass = jPackage._class(bean.getSimpleName() + "DTO");
         definedClass.constructor(JMod.PUBLIC);
         definedClass._implements(Serializable.class);
-        for (int i = 0; i < fields.size(); i++) {
-            definedClass.field(JMod.PRIVATE, fields.get(i).getType(), fields.get(i).getName());
+        for (Field field : fields) {
+            definedClass.field(JMod.PRIVATE, field.getType(), field.getName());
         }
         Util.generateSetter(fields, definedClass);
         Util.generateGetter(fields, definedClass);
@@ -79,8 +73,8 @@ public class DTOUtilGenerator implements ClassGenerator {
         jMethod.param(0, beanDTO, "beanDTO");
         JBlock jBlock = jMethod.body();
         jBlock.directStatement(bean.getSimpleName() + " bean = new " + bean.getSimpleName() + "();");
-        for (int i = 0; i < fields.size(); i++) {
-            jBlock.directStatement("bean.set" + Util.uppercaseFirstCharacter(fields.get(i).getName()) + "(" + "beanDTO." + "get" + Util.uppercaseFirstCharacter(fields.get(i).getName()) + "()" + ");");
+        for (Field field : fields) {
+            jBlock.directStatement("bean.set" + Util.uppercaseFirstCharacter(field.getName()) + "(" + "beanDTO." + "get" + Util.uppercaseFirstCharacter(field.getName()) + "()" + ");");
         }
         jBlock.directStatement("return bean;");
     }
@@ -90,8 +84,8 @@ public class DTOUtilGenerator implements ClassGenerator {
         jMethod.param(0, bean, "bean");
         JBlock jBlock = jMethod.body();
         jBlock.directStatement(beanDTO.getSimpleName() + " beanDTO = new " + beanDTO.getSimpleName() + "();");
-        for (int i = 0; i < fields.size(); i++) {
-            jBlock.directStatement("beanDTO.set" + Util.uppercaseFirstCharacter(fields.get(i).getName()) + "(" + "bean." + "get" + Util.uppercaseFirstCharacter(fields.get(i).getName()) + "()" + ");");
+        for (Field field : fields) {
+            jBlock.directStatement("beanDTO.set" + Util.uppercaseFirstCharacter(field.getName()) + "(" + "bean." + "get" + Util.uppercaseFirstCharacter(field.getName()) + "()" + ");");
         }
         jBlock.directStatement("return beanDTO;");
     }

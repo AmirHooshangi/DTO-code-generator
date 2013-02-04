@@ -37,11 +37,11 @@ public  class Util {
     public static JDefinedClass generateSetter(ArrayList<Field> fields, JDefinedClass definedClass) {
 
         JBlock jBlock = null;
-        for (int i = 0; i < fields.size(); i++) {
-            JMethod jMethod = definedClass.method(1, void.class, "set" + uppercaseFirstCharacter(fields.get(i).getName()));
-            jMethod.param(0, fields.get(i).getType(), fields.get(i).getName());
+        for (Field field : fields) {
+            JMethod jMethod = definedClass.method(1, void.class, "set" + uppercaseFirstCharacter(field.getName()));
+            jMethod.param(0, field.getType(), field.getName());
             jBlock = jMethod.body();
-            jBlock.directStatement("this." + fields.get(i).getName() + " = " + fields.get(i).getName()+";");
+            jBlock.directStatement("this." + field.getName() + " = " + field.getName() + ";");
         }
         return definedClass;
     }
@@ -49,10 +49,10 @@ public  class Util {
     public static JDefinedClass generateGetter(ArrayList<Field> fields, JDefinedClass definedClass) {
 
         JBlock jBlock = null;
-        for (int i = 0; i < fields.size(); i++) {
-            JMethod jMethod = definedClass.method(1, fields.get(i).getType(), "get" + uppercaseFirstCharacter(fields.get(i).getName()));
+        for (Field field : fields) {
+            JMethod jMethod = definedClass.method(1, field.getType(), "get" + uppercaseFirstCharacter(field.getName()));
             jBlock = jMethod.body();
-            jBlock.directStatement("return " + fields.get(i).getName()+";");
+            jBlock.directStatement("return " + field.getName() + ";");
         }
         return definedClass;
     }
@@ -60,7 +60,7 @@ public  class Util {
     
  public static String uppercaseFirstCharacter(String name){
      
-     char[] characters = name.toString().toCharArray();
+     char[] characters = name.toCharArray();
      if(Character.isUpperCase(characters[0])){
          return name;
      }else{
