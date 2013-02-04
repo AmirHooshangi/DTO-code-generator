@@ -36,7 +36,7 @@ public  class Util {
 
     public static JDefinedClass generateSetter(ArrayList<Field> fields, JDefinedClass definedClass) {
 
-        JBlock jBlock = null;
+        JBlock jBlock;
         for (Field field : fields) {
             JMethod jMethod = definedClass.method(1, void.class, "set" + uppercaseFirstCharacter(field.getName()));
             jMethod.param(0, field.getType(), field.getName());
@@ -48,7 +48,7 @@ public  class Util {
 
     public static JDefinedClass generateGetter(ArrayList<Field> fields, JDefinedClass definedClass) {
 
-        JBlock jBlock = null;
+        JBlock jBlock;
         for (Field field : fields) {
             JMethod jMethod = definedClass.method(1, field.getType(), "get" + uppercaseFirstCharacter(field.getName()));
             jBlock = jMethod.body();
