@@ -1,10 +1,10 @@
 DTO (Data Transfer Object) code generator API helps developers to use DTO design pattern fast and effectively. 
 DTO design pattern is being used in wide area of J2ee projects especially in those which uses EJB,SOAP etc.this API 
 is for developers who hate writing DTO classes and convert those values to their Beans and vise versa. there is some 
-easy steps to use this API, and some important notes that will be mentioned. all you need is methods in ClassGenerator
-interface. DTOUtilGenerator is one of implementations of ClassGenerator. so you need instances of this class.
+easy steps to use this API, and some important notes that will be mentioned. all you need is methods in BeanConverter
+interface. DtoGenerator is one of implementations of BeanConverter. so you need instances of this class.
 example :
-ClassGenerator dTOUtilGenerator = new DTOUtilGenerator();
+BeanConverter beanExtractor=new DtoGenerator();
 
 one of the advantages of this API is that it generates DTO class from your main Java Beans.
 you can generate your DTO class using generateDTOClass method in ClassGenerator interface.
@@ -14,6 +14,7 @@ first add jar of this project to your own project.
 suppose you have Hibernate Java Bean (it can be any POJO) and want to generate it's DTO class for using it in EJB or SOAP services.
 you must use @DTO annotation on top the fields on your Hibernate Bean that you want see in DTO class.
 e.g
+
 public class Student {
     
     @DTO
@@ -28,7 +29,6 @@ public class Student {
     public int getId() {
         return id;
     }
-
 }
 
 as you see "id" has @DTO annotation but "name" doesn't, so you wont see "name" field in your DTO class.
@@ -36,28 +36,15 @@ as you see "id" has @DTO annotation but "name" doesn't, so you wont see "name" f
 Note: you must generate setters and getters for annotated field and you must do it with standard java
 naming setXxx(..) getXxx().
 
-now you are ready to generate your DTO class with this methode.
+now you are ready to generate your DTO class with this method.
 
-DTOUtilGenerator.generateDTOClass(Student.class, "yourPackageName", "pathToSave");
-Student is your Hibernate bean class, "yourPackageName" is package of your java class. and "pathToSave" is where 
+beanExtractor.generateDtoFromBean(Student.class, "yourPackageName", "pathToSave");
+
+Student is your Hibernate bean class, "yourPackageName" is package of your java class. and "pathToSave" is where
 you want to save your java file on the hard disk.
 
 Now add this class to your project class path. the name of generated class should be StudentDTO.
+Also you can calls generateDtoFromBean method with package name, for example:
 
-so you are able to generate utility class for this DTO class cause you have StudentDTO.class in your
-classpath
-
-DTOUtilGenerator.generateDTOUtilClass(Student.class, StudentDTO.class,"yourPackageName", "pathToSave"); 
-
-
-
-
-
-
-
-
-
-
-
-
-
+beanExtractor.generateDtoFromBean("beans.model", "yourPackageName", "pathToSave");
+It will extracts all classes in beans.model package and generates Dtos from classes that have annotation of @DTO

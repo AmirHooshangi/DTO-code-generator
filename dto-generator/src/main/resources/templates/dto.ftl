@@ -1,15 +1,15 @@
 package ${packageName};
 
-class ${className} {
+public class ${className} {
 <#list fields as field>
-    private ${field}.type ${field}.name;
+    private ${field.getType()} ${field.getName()};
 
-    public ${field}.type get${field}.name(){
-        return this.${field}.name;
+    public ${field.getType()} get${field.getName()?cap_first}(){
+        return this.${field.getName()};
     }
 
-    public ${field}.type get${field}.name(){
-        return this.${field}.name;
+    public ${field.getType()} set${field.getName()?cap_first}(${field.getType()}  ${field.getName()}){
+        this.${field.getName()}=${field.getName()};
     }
 </#list>
 }
