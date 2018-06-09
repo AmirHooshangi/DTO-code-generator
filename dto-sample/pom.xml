@@ -11,7 +11,7 @@
   <description>Use the dto-generator to generate some Java code. Tests reference the generated classes.</description>
   <build>
     <plugins>
-      <plugin>
+     <!-- <plugin>
 	<groupId>org.codehaus.mojo</groupId>
 	<artifactId>exec-maven-plugin</artifactId>
 	<version>${version.exec-maven-plugin}</version>
@@ -28,7 +28,7 @@
 	    </configuration>
 	  </execution>
 	</executions>
-      </plugin>
+      </plugin>-->
       <plugin>
 	<groupId>org.codehaus.mojo</groupId>
 	<artifactId>build-helper-maven-plugin</artifactId>
